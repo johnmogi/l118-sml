@@ -143,55 +143,202 @@ class School_Manager_Lite_Admin_Wizard {
             <?php do_action('admin_print_styles'); ?>
             <?php do_action('admin_head'); ?>
             <style type="text/css">
+                body {
+                    background: #f1f1f1;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+                }
                 .school-manager-wizard-wrap {
-                    max-width: 800px;
+                    max-width: 900px;
                     margin: 2em auto;
                     text-align: right;
                     direction: rtl;
                     background: #fff;
-                    padding: 2em;
-                    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+                    padding: 3em;
+                    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+                    border-radius: 8px;
+                    border: 1px solid #e1e1e1;
+                }
+                .school-manager-wizard-wrap h1 {
+                    color: #23282d;
+                    font-size: 2.2em;
+                    margin-bottom: 0.5em;
+                    text-align: center;
+                    border-bottom: 3px solid #0073aa;
+                    padding-bottom: 0.5em;
                 }
                 .school-manager-wizard-steps {
                     display: flex;
-                    margin-bottom: 2em;
+                    margin: 2em 0 3em 0;
                     justify-content: center;
+                    background: #f8f9fa;
+                    padding: 1.5em;
+                    border-radius: 6px;
+                    border: 1px solid #e1e1e1;
                 }
                 .school-manager-wizard-steps li {
-                    padding: 0 1em;
-                    margin: 0;
+                    padding: 0.8em 1.5em;
+                    margin: 0 0.5em;
                     position: relative;
+                    background: #fff;
+                    border: 2px solid #ddd;
+                    border-radius: 25px;
+                    color: #666;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    min-width: 120px;
+                    text-align: center;
                 }
                 .school-manager-wizard-steps li::after {
-                    content: '\2192';
+                    content: '\2190';
                     position: absolute;
-                    right: -0.5em;
-                    top: 0;
+                    left: -1.2em;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 1.2em;
+                    color: #0073aa;
+                    font-weight: bold;
                 }
-                .school-manager-wizard-steps li:last-child::after {
+                .school-manager-wizard-steps li:first-child::after {
                     content: '';
                 }
                 .school-manager-wizard-steps li.active {
                     font-weight: bold;
-                    color: #0073aa;
+                    color: #fff;
+                    background: #0073aa;
+                    border-color: #0073aa;
+                    box-shadow: 0 2px 8px rgba(0,115,170,.3);
+                }
+                .school-manager-wizard-steps li.completed {
+                    background: #46b450;
+                    border-color: #46b450;
+                    color: #fff;
                 }
                 .school-manager-wizard-content {
-                    margin-bottom: 2em;
+                    margin-bottom: 3em;
+                    background: #fafafa;
+                    padding: 2em;
+                    border-radius: 6px;
+                    border: 1px solid #e1e1e1;
+                }
+                .school-manager-wizard-content h2 {
+                    color: #23282d;
+                    font-size: 1.8em;
+                    margin-bottom: 1em;
+                    padding-bottom: 0.5em;
+                    border-bottom: 2px solid #0073aa;
+                }
+                .school-manager-wizard-content p {
+                    color: #555;
+                    font-size: 1.1em;
+                    line-height: 1.6;
+                    margin-bottom: 1.5em;
                 }
                 .school-manager-wizard-content form {
                     text-align: right;
                 }
+                .school-manager-wizard-content .form-table {
+                    background: #fff;
+                    border: 1px solid #e1e1e1;
+                    border-radius: 4px;
+                }
                 .school-manager-wizard-content .form-table th {
                     width: 30%;
-                    padding: 15px 0 15px 10px;
+                    padding: 20px 15px;
                     text-align: right;
+                    background: #f8f9fa;
+                    color: #23282d;
+                    font-weight: 600;
+                    border-bottom: 1px solid #e1e1e1;
+                }
+                .school-manager-wizard-content .form-table td {
+                    padding: 20px 15px;
+                    border-bottom: 1px solid #e1e1e1;
+                }
+                .school-manager-wizard-content .form-table input[type="text"],
+                .school-manager-wizard-content .form-table input[type="email"] {
+                    padding: 12px 15px;
+                    border: 2px solid #ddd;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    transition: border-color 0.3s ease;
+                }
+                .school-manager-wizard-content .form-table input[type="text"]:focus,
+                .school-manager-wizard-content .form-table input[type="email"]:focus {
+                    border-color: #0073aa;
+                    outline: none;
+                    box-shadow: 0 0 0 2px rgba(0,115,170,.1);
                 }
                 .school-manager-wizard-buttons {
-                    text-align: left;
-                    margin-top: 20px;
+                    text-align: center;
+                    margin-top: 30px;
+                    padding-top: 20px;
+                    border-top: 1px solid #e1e1e1;
                 }
                 .school-manager-wizard-buttons .button-primary {
-                    margin-left: 10px;
+                    background: #0073aa;
+                    border-color: #0073aa;
+                    color: #fff;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    border-radius: 25px;
+                    margin: 0 10px;
+                    transition: all 0.3s ease;
+                    text-decoration: none;
+                    display: inline-block;
+                }
+                .school-manager-wizard-buttons .button-primary:hover {
+                    background: #005a87;
+                    border-color: #005a87;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0,115,170,.3);
+                }
+                .school-manager-wizard-buttons .button-secondary {
+                    background: #f7f7f7;
+                    border-color: #ccc;
+                    color: #555;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    border-radius: 25px;
+                    margin: 0 10px;
+                    transition: all 0.3s ease;
+                }
+                .school-manager-wizard-buttons .button-secondary:hover {
+                    background: #e7e7e7;
+                    border-color: #999;
+                }
+                .notice {
+                    margin: 20px 0;
+                    padding: 15px;
+                    border-radius: 4px;
+                    border-left: 4px solid;
+                }
+                .notice-error {
+                    background: #fef7f7;
+                    border-left-color: #dc3232;
+                    color: #dc3232;
+                }
+                .notice-success {
+                    background: #f7fff7;
+                    border-left-color: #46b450;
+                    color: #46b450;
+                }
+                .wp-list-table {
+                    background: #fff;
+                    border: 1px solid #e1e1e1;
+                    border-radius: 4px;
+                }
+                .wp-list-table th {
+                    background: #f8f9fa;
+                    color: #23282d;
+                    font-weight: 600;
+                }
+                h3 {
+                    color: #23282d;
+                    font-size: 1.4em;
+                    margin: 2em 0 1em 0;
+                    padding-bottom: 0.5em;
+                    border-bottom: 1px solid #e1e1e1;
                 }
             </style>
         </head>

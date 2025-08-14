@@ -8,7 +8,12 @@
 /* Common Styles */
 .school-manager-admin-dashboard .welcome-panel,
 .school-manager-teacher-dashboard .welcome-panel {
-    padding: 23px 10px 0;
+    padding: 30px 20px;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    margin-bottom: 30px;
 }
 
 .school-manager-admin-dashboard .welcome-panel-content,
@@ -16,29 +21,165 @@
     max-width: 1300px;
 }
 
+.school-manager-admin-dashboard .welcome-panel h2,
+.school-manager-teacher-dashboard .welcome-panel h2 {
+    color: #23282d;
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    text-align: center;
+    border-bottom: 3px solid #0073aa;
+    padding-bottom: 0.5em;
+}
+
+.school-manager-admin-dashboard .welcome-panel .about-description,
+.school-manager-teacher-dashboard .welcome-panel .about-description {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 2em;
+    font-weight: 400;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 2em;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column {
+    flex: 1;
+    min-width: 280px;
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid #e1e1e1;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column h3 {
+    color: #23282d;
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #0073aa;
+    font-weight: 600;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column li {
+    margin-bottom: 12px;
+    padding: 8px 0;
+    color: #555;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column li strong {
+    color: #0073aa;
+    font-weight: 600;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column .button {
+    display: inline-block;
+    margin: 8px 10px 8px 0;
+    padding: 10px 20px;
+    background: #0073aa;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid #0073aa;
+}
+
+.school-manager-admin-dashboard .welcome-panel-column .button:hover {
+    background: #005a87;
+    border-color: #005a87;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,115,170,.3);
+    color: #fff;
+}
+
+@media screen and (max-width: 782px) {
+    .school-manager-admin-dashboard .welcome-panel-column-container {
+        flex-direction: column;
+    }
+    
+    .school-manager-admin-dashboard .welcome-panel-column {
+        min-width: auto;
+    }
+}
+
 /* Form Styles */
 .school-manager-form {
     background: #fff;
-    border: 1px solid #ccd0d4;
-    padding: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    border: 1px solid #e1e1e1;
+    padding: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    border-radius: 8px;
 }
 
 .school-manager-form h2 {
     margin-top: 0;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 12px;
-    margin-bottom: 15px;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    color: #23282d;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.school-manager-form .form-table {
+    background: #fafafa;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
 }
 
 .school-manager-form .form-table th {
     width: 200px;
+    background: #f8f9fa;
+    color: #23282d;
+    font-weight: 600;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.school-manager-form .form-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.school-manager-form .form-table input[type="text"],
+.school-manager-form .form-table input[type="email"],
+.school-manager-form .form-table select,
+.school-manager-form .form-table textarea {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.school-manager-form .form-table input[type="text"]:focus,
+.school-manager-form .form-table input[type="email"]:focus,
+.school-manager-form .form-table select:focus,
+.school-manager-form .form-table textarea:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,115,170,.1);
 }
 
 .school-manager-form .required {
     color: #dc3232;
+    font-weight: 600;
 }
 
 /* Table Styles */
@@ -120,13 +261,28 @@
 .school-manager-dashboard-widgets {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 25px;
+    margin-top: 30px;
 }
 
 .school-manager-dashboard-widgets .postbox {
     flex: 1;
-    min-width: 280px;
+    min-width: 300px;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.school-manager-dashboard-widgets .postbox h2 {
+    background: #f8f9fa;
+    color: #23282d;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e1e1;
+    border-radius: 8px 8px 0 0;
 }
 
 .school-manager-dashboard-widgets .inside {
@@ -136,94 +292,185 @@
 
 .school-manager-dashboard-widgets .inside ul {
     margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .school-manager-dashboard-widgets .inside li {
-    padding: 8px 12px;
+    padding: 12px 20px;
     margin: 0;
     border-bottom: 1px solid #f0f0f0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .school-manager-dashboard-widgets .inside li:last-child {
     border-bottom: none;
 }
 
-/* Wizard Styles */
+.school-manager-dashboard-widgets .inside li:hover {
+    background: #f8f9fa;
+    color: #23282d;
+}
+
+/* Enhanced Wizard Styles for Admin Pages */
 .school-manager-wizard-container {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 900px;
+    margin: 30px auto;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    border-radius: 8px;
+    border: 1px solid #e1e1e1;
 }
 
 .school-manager-wizard-header {
-    padding: 15px 20px;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e2e4e7;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, #0073aa 0%, #005a87 100%);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
 }
 
 .school-manager-wizard-header h1 {
     margin: 0;
-    font-size: 20px;
+    font-size: 1.8em;
     line-height: 1.4;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
 }
 
 .school-manager-wizard-steps {
     display: flex;
-    padding: 0 20px;
+    padding: 0;
     border-bottom: 1px solid #e2e4e7;
     background: #f8f9fa;
+    justify-content: center;
 }
 
 .school-manager-wizard-steps .step {
-    padding: 12px 20px;
+    padding: 18px 25px;
     flex: 1;
     font-weight: 500;
     text-align: center;
     position: relative;
+    color: #666;
+    transition: all 0.3s ease;
+    border-right: 1px solid #e2e4e7;
+    max-width: 180px;
+}
+
+.school-manager-wizard-steps .step:last-child {
+    border-right: none;
 }
 
 .school-manager-wizard-steps .step.active {
-    color: #2271b1;
-    border-bottom: 4px solid #2271b1;
+    color: #0073aa;
+    background: #fff;
+    border-bottom: 4px solid #0073aa;
     margin-bottom: -1px;
+    font-weight: 600;
 }
 
 .school-manager-wizard-steps .step.done {
-    color: #2c3338;
+    color: #46b450;
+    background: #f7fff7;
+    font-weight: 600;
 }
 
 .school-manager-wizard-content {
-    padding: 20px;
+    padding: 30px;
+    min-height: 400px;
 }
 
 .school-manager-wizard-buttons {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: center;
+    gap: 15px;
+    padding: 25px 30px;
     border-top: 1px solid #e2e4e7;
     background: #f8f9fa;
+    border-radius: 0 0 8px 8px;
 }
 
 .school-manager-wizard-buttons .button-primary {
-    margin-left: auto;
+    background: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.school-manager-wizard-buttons .button-primary:hover {
+    background: #005a87;
+    border-color: #005a87;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,115,170,.3);
+}
+
+.school-manager-wizard-buttons .button-secondary {
+    background: #f7f7f7;
+    border-color: #ccc;
+    color: #555;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.school-manager-wizard-buttons .button-secondary:hover {
+    background: #e7e7e7;
+    border-color: #999;
 }
 
 /* Responsive Adjustments */
 @media screen and (max-width: 782px) {
+    .school-manager-wizard-container {
+        margin: 20px 10px;
+    }
+    
     .school-manager-wizard-steps {
         flex-direction: column;
     }
     
     .school-manager-wizard-steps .step {
         border-bottom: 1px solid #e2e4e7;
+        border-right: none;
+        max-width: none;
     }
     
     .school-manager-wizard-steps .step.active {
-        border-bottom: 1px solid #2271b1;
+        border-bottom: 1px solid #0073aa;
+    }
+    
+    .school-manager-wizard-header {
+        padding: 20px 15px;
+    }
+    
+    .school-manager-wizard-content {
+        padding: 20px 15px;
+    }
+    
+    .school-manager-wizard-buttons {
+        padding: 20px 15px;
+        flex-direction: column;
+        align-items: center;
     }
     
     .school-manager-form .form-table th {
         width: auto;
+    }
+    
+    .school-manager-dashboard-widgets {
+        gap: 15px;
+    }
+    
+    .school-manager-dashboard-widgets .postbox {
+        min-width: auto;
     }
 }
