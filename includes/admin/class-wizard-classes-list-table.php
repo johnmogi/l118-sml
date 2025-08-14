@@ -156,6 +156,8 @@ class School_Manager_Lite_Wizard_Classes_List_Table extends WP_List_Table {
      * Prepare items
      */
     public function prepare_items() {
+        global $wpdb;
+        
         $columns = $this->get_columns();
         $hidden = array();
         $sortable = $this->get_sortable_columns();
@@ -167,45 +169,97 @@ class School_Manager_Lite_Wizard_Classes_List_Table extends WP_List_Table {
         $search = isset($_REQUEST['s']) ? sanitize_text_field($_REQUEST['s']) : '';
         
         // Handle sorting
-        $orderby = isset($_REQUEST['orderby']) ? sanitize_text_field($_REQUEST['orderby']) : 'title';
+        $orderby = isset($_REQUEST['orderby']) ? sanitize_text_field($_REQUEST['orderby']) : 'name';
         $order = isset($_REQUEST['order']) ? sanitize_text_field($_REQUEST['order']) : 'ASC';
         
-        // Query args for LearnDash groups
-        $args = array(
-            'post_type'      => learndash_get_post_type_slug('group'),
-            'posts_per_page' => -1,
-            'post_status'    => 'publish',
-            'orderby'        => 'title',
-            'order'          => $order,
-            's'              => $search,
-        );
-
-        // If teacher ID is provided, get groups for that teacher
+        // Build the query to get school classes from database
+        $where_clauses = array();
+        $query_params = array();
+        
+        // Add search filter
+        if (!empty($search)) {
+            $where_clauses[] = "(c.name LIKE %s OR c.description LIKE %s)";
+            $query_params[] = '%' . $wpdb->esc_like($search) . '%';
+            $query_params[] = '%' . $wpdb->esc_like($search) . '%';
+        }
+        
+        // Add teacher filter
         if ($this->teacher_id > 0) {
-            $args['author'] = $this->teacher_id;
-        }
-
-        // Get all groups
-        $groups = get_posts($args);
-        
-        // Format the groups to match expected format
-        $formatted_groups = array();
-        foreach ($groups as $group) {
-            $formatted_group = new stdClass();
-            $formatted_group->id = $group->ID;
-            $formatted_group->name = $group->post_title;
-            $formatted_group->description = $group->post_content;
-            $formatted_group->teacher_id = $group->post_author;
-            $formatted_group->created_at = $group->post_date;
-            
-            // Count students in this group
-            $group_users = learndash_get_groups_user_ids($group->ID);
-            $formatted_group->student_count = is_array($group_users) ? count($group_users) : 0;
-            
-            $formatted_groups[] = $formatted_group;
+            $where_clauses[] = "c.teacher_id = %d";
+            $query_params[] = $this->teacher_id;
         }
         
-        $this->items = $formatted_groups;
+        // Build WHERE clause
+        $where_sql = '';
+        if (!empty($where_clauses)) {
+            $where_sql = 'WHERE ' . implode(' AND ', $where_clauses);
+        }
+        
+        // Validate orderby
+        $allowed_orderby = array('name', 'created_at', 'id');
+        if (!in_array($orderby, $allowed_orderby)) {
+            $orderby = 'name';
+        }
+        
+        // Validate order
+        $order = strtoupper($order) === 'DESC' ? 'DESC' : 'ASC';
+        
+        // Get classes with student count - using direct table names that we know exist
+        $sql = "
+            SELECT 
+                c.id,
+                c.name,
+                c.description,
+                c.teacher_id,
+                c.created_at,
+                COALESCE(COUNT(sc.student_id), 0) as student_count
+            FROM edc_school_classes c
+            LEFT JOIN edc_school_student_classes sc ON c.id = sc.class_id
+            {$where_sql}
+            GROUP BY c.id, c.name, c.description, c.teacher_id, c.created_at
+            ORDER BY c.{$orderby} {$order}
+        ";
+        
+        // Execute query with proper error handling
+        if (!empty($query_params)) {
+            $classes = $wpdb->get_results($wpdb->prepare($sql, $query_params));
+        } else {
+            $classes = $wpdb->get_results($sql);
+        }
+        
+        // Handle database errors
+        if ($wpdb->last_error) {
+            // Fallback: try with WordPress prefix format
+            $fallback_sql = str_replace('edc_school_classes', $wpdb->prefix . 'school_classes', $sql);
+            $fallback_sql = str_replace('edc_school_student_classes', $wpdb->prefix . 'school_student_classes', $fallback_sql);
+            
+            if (!empty($query_params)) {
+                $classes = $wpdb->get_results($wpdb->prepare($fallback_sql, $query_params));
+            } else {
+                $classes = $wpdb->get_results($fallback_sql);
+            }
+        }
+        
+        // Ensure we have an array
+        if (!is_array($classes)) {
+            $classes = array();
+        }
+        
+        // Format the classes to match expected format
+        $formatted_classes = array();
+        foreach ($classes as $class) {
+            $formatted_class = new stdClass();
+            $formatted_class->id = (int) $class->id;
+            $formatted_class->name = sanitize_text_field($class->name);
+            $formatted_class->description = sanitize_textarea_field($class->description);
+            $formatted_class->teacher_id = (int) $class->teacher_id;
+            $formatted_class->created_at = $class->created_at;
+            $formatted_class->student_count = (int) $class->student_count;
+            
+            $formatted_classes[] = $formatted_class;
+        }
+        
+        $this->items = $formatted_classes;
     }
 
     /**

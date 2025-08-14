@@ -148,45 +148,48 @@ class School_Manager_Lite_Admin_Wizard {
                     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
                 }
                 .school-manager-wizard-wrap {
-                    max-width: 900px;
-                    margin: 2em auto;
+                    max-width: 800px;
+                    margin: 1.5em auto;
                     text-align: right;
                     direction: rtl;
                     background: #fff;
-                    padding: 3em;
-                    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-                    border-radius: 8px;
-                    border: 1px solid #e1e1e1;
+                    padding: 2em;
+                    box-shadow: 0 2px 6px rgba(0,0,0,.1);
+                    border-radius: 4px;
+                    border: 1px solid #ddd;
                 }
                 .school-manager-wizard-wrap h1 {
                     color: #23282d;
-                    font-size: 2.2em;
-                    margin-bottom: 0.5em;
+                    font-size: 2em;
+                    margin-bottom: 0.8em;
                     text-align: center;
-                    border-bottom: 3px solid #0073aa;
-                    padding-bottom: 0.5em;
+                    border-bottom: 2px solid #0073aa;
+                    padding-bottom: 0.3em;
                 }
                 .school-manager-wizard-steps {
                     display: flex;
-                    margin: 2em 0 3em 0;
+                    margin: 1.5em 0 2em 0;
                     justify-content: center;
                     background: #f8f9fa;
-                    padding: 1.5em;
-                    border-radius: 6px;
-                    border: 1px solid #e1e1e1;
+                    padding: 1em;
+                    border-radius: 3px;
+                    border: 1px solid #ddd;
+                    direction: rtl;
                 }
                 .school-manager-wizard-steps li {
-                    padding: 0.8em 1.5em;
-                    margin: 0 0.5em;
+                    padding: 0.6em 1.2em;
+                    margin: 0 0.3em;
                     position: relative;
                     background: #fff;
-                    border: 2px solid #ddd;
-                    border-radius: 25px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
                     color: #666;
                     font-weight: 500;
-                    transition: all 0.3s ease;
-                    min-width: 120px;
+                    font-size: 1em;
+                    transition: all 0.2s ease;
+                    min-width: 100px;
                     text-align: center;
+                    direction: rtl;
                 }
                 .school-manager-wizard-steps li::after {
                     content: '\2190';
@@ -214,24 +217,24 @@ class School_Manager_Lite_Admin_Wizard {
                     color: #fff;
                 }
                 .school-manager-wizard-content {
-                    margin-bottom: 3em;
+                    margin-bottom: 2em;
                     background: #fafafa;
-                    padding: 2em;
-                    border-radius: 6px;
-                    border: 1px solid #e1e1e1;
+                    padding: 1.5em;
+                    border-radius: 3px;
+                    border: 1px solid #ddd;
                 }
                 .school-manager-wizard-content h2 {
                     color: #23282d;
-                    font-size: 1.8em;
-                    margin-bottom: 1em;
-                    padding-bottom: 0.5em;
-                    border-bottom: 2px solid #0073aa;
+                    font-size: 1.6em;
+                    margin-bottom: 0.8em;
+                    padding-bottom: 0.3em;
+                    border-bottom: 1px solid #0073aa;
                 }
                 .school-manager-wizard-content p {
-                    color: #555;
+                    color: #666;
                     font-size: 1.1em;
-                    line-height: 1.6;
-                    margin-bottom: 1.5em;
+                    line-height: 1.4;
+                    margin-bottom: 1em;
                 }
                 .school-manager-wizard-content form {
                     text-align: right;
@@ -270,38 +273,36 @@ class School_Manager_Lite_Admin_Wizard {
                 }
                 .school-manager-wizard-buttons {
                     text-align: center;
-                    margin-top: 30px;
-                    padding-top: 20px;
-                    border-top: 1px solid #e1e1e1;
+                    margin-top: 20px;
+                    padding-top: 15px;
+                    border-top: 1px solid #ddd;
                 }
                 .school-manager-wizard-buttons .button-primary {
                     background: #0073aa;
                     border-color: #0073aa;
                     color: #fff;
-                    padding: 12px 30px;
-                    font-size: 16px;
-                    font-weight: 600;
-                    border-radius: 25px;
-                    margin: 0 10px;
-                    transition: all 0.3s ease;
+                    padding: 10px 24px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    border-radius: 3px;
+                    margin: 0 8px;
+                    transition: all 0.2s ease;
                     text-decoration: none;
                     display: inline-block;
                 }
                 .school-manager-wizard-buttons .button-primary:hover {
                     background: #005a87;
                     border-color: #005a87;
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(0,115,170,.3);
                 }
                 .school-manager-wizard-buttons .button-secondary {
                     background: #f7f7f7;
                     border-color: #ccc;
                     color: #555;
-                    padding: 12px 30px;
-                    font-size: 16px;
-                    border-radius: 25px;
-                    margin: 0 10px;
-                    transition: all 0.3s ease;
+                    padding: 10px 24px;
+                    font-size: 15px;
+                    border-radius: 3px;
+                    margin: 0 8px;
+                    transition: all 0.2s ease;
                 }
                 .school-manager-wizard-buttons .button-secondary:hover {
                     background: #e7e7e7;
@@ -579,15 +580,21 @@ class School_Manager_Lite_Admin_Wizard {
             }
         }
         
-        // Include the list table class
-        if (!class_exists('School_Manager_Lite_Wizard_Classes_List_Table')) {
-            require_once SCHOOL_MANAGER_LITE_PATH . 'includes/admin/class-wizard-classes-list-table.php';
-        }
-        
-        // Create an instance of our classes list table
-        $classes_table = new School_Manager_Lite_Wizard_Classes_List_Table($teacher_id);
-        
-        $classes_table->prepare_items();
+        // Get classes directly from database (we know this works from debug page)
+        global $wpdb;
+        $classes = $wpdb->get_results("
+            SELECT 
+                c.id,
+                c.name,
+                c.description,
+                c.teacher_id,
+                c.created_at,
+                COALESCE(COUNT(sc.student_id), 0) as student_count
+            FROM edc_school_classes c
+            LEFT JOIN edc_school_student_classes sc ON c.id = sc.class_id
+            GROUP BY c.id, c.name, c.description, c.teacher_id, c.created_at
+            ORDER BY c.name ASC
+        ");
         
         // Check for error messages
         $error = isset($_GET['error']) ? sanitize_text_field($_GET['error']) : '';
@@ -618,16 +625,60 @@ class School_Manager_Lite_Admin_Wizard {
             <?php wp_nonce_field('school_manager_wizard', 'school_manager_wizard_nonce'); ?>
             <input type="hidden" name="teacher_id" value="<?php echo esc_attr($teacher_id); ?>">
             
-            <div class="tablenav top">
-                <div class="alignleft actions">
-                    <?php $classes_table->search_box(__('חפש כיתות', 'school-manager-lite'), 'search-classes'); ?>
-                </div>
-                <br class="clear">
-            </div>
-            
             <h3><?php _e('בחר כיתה קיימת', 'school-manager-lite'); ?></h3>
             
-            <?php $classes_table->display(); ?>
+            <?php if (!empty($classes)) : ?>
+                <table class="wp-list-table widefat fixed striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="manage-column column-cb check-column">
+                                <label class="screen-reader-text" for="cb-select-all-1"><?php _e('בחר הכל', 'school-manager-lite'); ?></label>
+                            </th>
+                            <th scope="col" class="manage-column column-name"><?php _e('שם הכיתה', 'school-manager-lite'); ?></th>
+                            <th scope="col" class="manage-column column-teacher"><?php _e('מורה', 'school-manager-lite'); ?></th>
+                            <th scope="col" class="manage-column column-students"><?php _e('תלמידים', 'school-manager-lite'); ?></th>
+                            <th scope="col" class="manage-column column-date"><?php _e('תאריך יצירה', 'school-manager-lite'); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($classes as $class) : ?>
+                            <tr>
+                                <th scope="row" class="check-column">
+                                    <input type="radio" name="class_id" value="<?php echo esc_attr($class->id); ?>" id="class_<?php echo esc_attr($class->id); ?>">
+                                </th>
+                                <td class="column-name">
+                                    <label for="class_<?php echo esc_attr($class->id); ?>">
+                                        <strong><?php echo esc_html($class->name); ?></strong>
+                                        <?php if (!empty($class->description)) : ?>
+                                            <br><span class="description"><?php echo esc_html($class->description); ?></span>
+                                        <?php endif; ?>
+                                    </label>
+                                </td>
+                                <td class="column-teacher">
+                                    <?php 
+                                    if ($class->teacher_id) {
+                                        $teacher = get_user_by('id', $class->teacher_id);
+                                        echo $teacher ? esc_html($teacher->display_name) : __('לא נמצא', 'school-manager-lite');
+                                    } else {
+                                        echo __('לא הוקצה', 'school-manager-lite');
+                                    }
+                                    ?>
+                                </td>
+                                <td class="column-students">
+                                    <?php echo esc_html($class->student_count); ?>
+                                </td>
+                                <td class="column-date">
+                                    <?php echo esc_html(mysql2date(__('Y/m/d'), $class->created_at)); ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else : ?>
+                <div class="notice notice-info">
+                    <p><?php _e('לא נמצאו כיתות. צור כיתה חדשה למטה.', 'school-manager-lite'); ?></p>
+                </div>
+            <?php endif; ?>
             
             <h3><?php _e('או צור כיתה חדשה', 'school-manager-lite'); ?></h3>
             <table class="form-table">
@@ -689,19 +740,26 @@ class School_Manager_Lite_Admin_Wizard {
         if (!empty($_POST['class_id'])) {
             $class_id = absint($_POST['class_id']);
             
-            // Verify the group exists
-            $group = get_post($class_id);
+            // Verify the class exists in our school classes table
+            global $wpdb;
+            $class = $wpdb->get_row($wpdb->prepare(
+                "SELECT * FROM edc_school_classes WHERE id = %d",
+                $class_id
+            ));
             
-            if ($group && $group->post_type === 'groups') {
+            if ($class) {
                 // Store class ID for next step
                 update_option('school_manager_wizard_class_id', $class_id, false);
                 
-                // If the teacher is different, update the group author
-                if ($teacher_id && $group->post_author != $teacher_id) {
-                    wp_update_post(array(
-                        'ID' => $class_id,
-                        'post_author' => $teacher_id
-                    ));
+                // If teacher is different, update the class teacher
+                if ($teacher_id && $class->teacher_id != $teacher_id) {
+                    $wpdb->update(
+                        'edc_school_classes',
+                        array('teacher_id' => $teacher_id),
+                        array('id' => $class_id),
+                        array('%d'),
+                        array('%d')
+                    );
                 }
                 
                 wp_safe_redirect($this->get_next_step_url());
@@ -711,22 +769,31 @@ class School_Manager_Lite_Admin_Wizard {
         
         // Handle new class creation
         if (!empty($_POST['class_name']) && !empty($_POST['teacher_id'])) {
-            // Create new LearnDash group
-            $group_id = wp_insert_post(array(
-                'post_title'   => sanitize_text_field($_POST['class_name']),
-                'post_content' => isset($_POST['class_description']) ? sanitize_textarea_field($_POST['class_description']) : '',
-                'post_status'  => 'publish',
-                'post_type'    => 'groups',
-                'post_author'  => $teacher_id,
-            ));
+            global $wpdb;
             
-            if (!is_wp_error($group_id)) {
-                // Store class ID for next step
-                update_option('school_manager_wizard_class_id', $group_id, false);
+            // Insert new class into school classes table
+            $result = $wpdb->insert(
+                'edc_school_classes',
+                array(
+                    'name' => sanitize_text_field($_POST['class_name']),
+                    'description' => isset($_POST['class_description']) ? sanitize_textarea_field($_POST['class_description']) : '',
+                    'teacher_id' => $teacher_id,
+                    'created_at' => current_time('mysql'),
+                    'status' => 'active'
+                ),
+                array('%s', '%s', '%d', '%s', '%s')
+            );
+            
+            if ($result !== false) {
+                $class_id = $wpdb->insert_id;
                 
-                // Set the group leader if this is a teacher
-                if (function_exists('ld_update_leader_group_access')) {
-                    ld_update_leader_group_access($teacher_id, $group_id);
+                // Store class ID for next step
+                update_option('school_manager_wizard_class_id', $class_id, false);
+                
+                // Create corresponding LearnDash group if LearnDash integration is enabled
+                if (class_exists('School_Manager_Lite_LearnDash_Integration')) {
+                    $integration = new School_Manager_Lite_LearnDash_Integration();
+                    $integration->create_group_for_class($class_id);
                 }
                 
                 wp_safe_redirect($this->get_next_step_url());

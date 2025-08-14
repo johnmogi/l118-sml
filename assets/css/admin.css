@@ -8,12 +8,12 @@
 /* Common Styles */
 .school-manager-admin-dashboard .welcome-panel,
 .school-manager-teacher-dashboard .welcome-panel {
-    padding: 30px 20px;
+    padding: 20px;
     background: #fff;
-    border: 1px solid #e1e1e1;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
-    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    margin-bottom: 20px;
 }
 
 .school-manager-admin-dashboard .welcome-panel-content,
@@ -24,45 +24,45 @@
 .school-manager-admin-dashboard .welcome-panel h2,
 .school-manager-teacher-dashboard .welcome-panel h2 {
     color: #23282d;
-    font-size: 1.8em;
-    margin-bottom: 0.5em;
+    font-size: 1.7em;
+    margin-bottom: 0.8em;
     text-align: center;
-    border-bottom: 3px solid #0073aa;
-    padding-bottom: 0.5em;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 0.3em;
 }
 
 .school-manager-admin-dashboard .welcome-panel .about-description,
 .school-manager-teacher-dashboard .welcome-panel .about-description {
-    color: #555;
+    color: #666;
     font-size: 1.1em;
-    line-height: 1.6;
+    line-height: 1.4;
     text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 1.2em;
     font-weight: 400;
 }
 
 .school-manager-admin-dashboard .welcome-panel-column-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 2em;
+    gap: 20px;
+    margin-top: 1em;
 }
 
 .school-manager-admin-dashboard .welcome-panel-column {
     flex: 1;
-    min-width: 280px;
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 6px;
-    border: 1px solid #e1e1e1;
+    min-width: 250px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
 }
 
 .school-manager-admin-dashboard .welcome-panel-column h3 {
     color: #23282d;
-    font-size: 1.3em;
-    margin-bottom: 1em;
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid #0073aa;
+    font-size: 1.2em;
+    margin-bottom: 0.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #0073aa;
     font-weight: 600;
 }
 
@@ -73,11 +73,11 @@
 }
 
 .school-manager-admin-dashboard .welcome-panel-column li {
-    margin-bottom: 12px;
-    padding: 8px 0;
+    margin-bottom: 8px;
+    padding: 4px 0;
     color: #555;
     font-size: 1em;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 .school-manager-admin-dashboard .welcome-panel-column li strong {
@@ -87,22 +87,21 @@
 
 .school-manager-admin-dashboard .welcome-panel-column .button {
     display: inline-block;
-    margin: 8px 10px 8px 0;
-    padding: 10px 20px;
+    margin: 5px 8px 5px 0;
+    padding: 8px 16px;
     background: #0073aa;
     color: #fff;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 3px;
     font-weight: 500;
-    transition: all 0.3s ease;
-    border: 2px solid #0073aa;
+    font-size: 1em;
+    transition: all 0.2s ease;
+    border: 1px solid #0073aa;
 }
 
 .school-manager-admin-dashboard .welcome-panel-column .button:hover {
     background: #005a87;
     border-color: #005a87;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,115,170,.3);
     color: #fff;
 }
 

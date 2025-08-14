@@ -140,7 +140,9 @@ class School_Manager_Lite {
                 'includes/class-basic-fixes.php',
                 'includes/class-instructor-quiz-connector.php',
                 'includes/class-instructor-quiz-manager.php',
-                'includes/class-instructor-dashboard-widget.php'
+                'includes/class-instructor-dashboard-widget.php',
+                'includes/admin/class-learndash-fix.php',
+                'includes/admin/class-admin-tools.php'
             );
             
             foreach ($core_files as $file) {

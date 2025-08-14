@@ -108,30 +108,38 @@ class School_Manager_Lite_Class_Manager {
     }
 
     /**
-     * Get class by ID (LearnDash group)
+     * Get class by ID from school classes database
      *
-     * @param int $class_id Class ID (Group ID)
+     * @param int $class_id Class ID from edc_school_classes table
      * @return object|false Class object or false if not found
      */
     public function get_class($class_id) {
-        $group = get_post($class_id);
+        global $wpdb;
         
-        if (!$group || $group->post_type !== 'groups') {
+        // Get class from school classes table
+        $class = $wpdb->get_row($wpdb->prepare(
+            "SELECT 
+                c.id,
+                c.name,
+                c.description,
+                c.teacher_id,
+                c.created_at,
+                COALESCE(COUNT(sc.student_id), 0) as student_count
+            FROM edc_school_classes c
+            LEFT JOIN edc_school_student_classes sc ON c.id = sc.class_id
+            WHERE c.id = %d
+            GROUP BY c.id, c.name, c.description, c.teacher_id, c.created_at",
+            $class_id
+        ));
+        
+        if (!$class) {
             return false;
         }
         
-        // Format as class object
-        $class = new stdClass();
-        $class->id = $group->ID;
-        $class->name = $group->post_title;
-        $class->description = $group->post_content;
-        $class->teacher_id = $group->post_author;
-        $class->created_at = $group->post_date;
-        
-        // Get student count
-        $group_users = function_exists('learndash_get_groups_user_ids') ? 
-            learndash_get_groups_user_ids($group->ID) : array();
-        $class->student_count = is_array($group_users) ? count($group_users) : 0;
+        // Ensure proper data types
+        $class->id = (int) $class->id;
+        $class->teacher_id = (int) $class->teacher_id;
+        $class->student_count = (int) $class->student_count;
         
         return $class;
     }
